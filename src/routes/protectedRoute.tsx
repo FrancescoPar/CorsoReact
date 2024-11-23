@@ -1,17 +1,21 @@
 import { useEffect } from "react"
-import { useNavigate } from "react-router"
+import { useNavigate, useOutlet } from "react-router"
 
-export function ProtectedRoute({children}:{children: React.ReactNode}){
+export function ProtectedRoute(
+    // {children}:{children: React.ReactNode}
+){
 
     const navigateTo = useNavigate();
 
+    const outlet = useOutlet();
+
     useEffect(()=>{
-        navigateTo('/register')
+        console.log('pippo')
     },[])
 
     return(
         <>
-            {children}
+            {outlet}
         </>
     )
 }

@@ -5,7 +5,7 @@ export function Login(){
 
     
     const [loginForm, setLoginForm] = useState({
-        email: 'cazz',
+        email: '',
         password: ''
     })
 

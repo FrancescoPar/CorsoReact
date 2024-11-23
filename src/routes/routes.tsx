@@ -7,13 +7,26 @@ import { ProtectedRoute } from "./protectedRoute";
 
 export const routes: RoutesType[] = [
     {
-        element: <Layout/>,
+        element: <Layout/>, // imposto il layout alla radice delle rotte per averlo sempre
         children: [
             {
-                path: '',
-                element: <ProtectedRoute><Home/></ProtectedRoute>
+                element: <ProtectedRoute/>, // imposto le rotte protette solo sulle rotte applicative
+                children: [
+                    {
+                        path: '',
+                        element: <Home/>
+                    },
+                    {
+                        path: 'corsi',
+                        children:[
+                            {
+
+                            }
+                        ]
+                    }
+                ]
             },
-            {
+            { // non metto la protezione sulle rotte di login e di registrazione perché non è necessario
                 path: 'login',
                 element: <Login/>
             },
