@@ -1,16 +1,15 @@
-import { useOutlet } from "react-router";
+import { useState } from "react";
+import { Outlet } from "react-router";
 import { Header } from "./header/header";
 
 export function Layout(){
 
-    const outlet = useOutlet();
+    const [title, setTitle] =useState('')
 
     return(
         <>
-        <Header></Header>
-        <main>
-            {outlet}
-        </main>
+        <Header title={title}></Header>
+        <Outlet context={[title, setTitle]}></Outlet>
         </>
     )
 }

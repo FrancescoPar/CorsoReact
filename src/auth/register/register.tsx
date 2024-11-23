@@ -1,11 +1,12 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { IRegistrationForm } from "../../lib/interfaces";
 import { validationService } from "../../services/validationService";
-import { useNavigate } from "react-router";
+import { useNavigate, useOutletContext } from "react-router";
 import { EyeOff } from "lucide-react";
 
 export function Register(){
 
+    const [type, setType] = useState<string>("password")
     const [registerForm, setRegisterForm] = useState<IRegistrationForm>({
         firstName: '',
         lastName: '',
@@ -14,7 +15,10 @@ export function Register(){
         confermaPassword: ''
     });
 
-    const [type, setType] = useState<string>("password")
+    const [title, setTitle] = useOutletContext()
+    useEffect(()=>{
+        setTitle("Registrazione")
+    },[])
 
     const navigateTo = useNavigate();
 

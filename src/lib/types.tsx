@@ -3,3 +3,8 @@ export type RoutesType = {
     element?: JSX.Element,
     children?: RoutesType[]
 }
+
+export type NavLinkType = {
+    desc: string,
+    path: string
+}

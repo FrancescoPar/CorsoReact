@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom"
 
-export function Header({title = "Header"}:{title:string}){
+export function Header({title}:{title:string}){
 
     return(
         <>
