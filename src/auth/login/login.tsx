@@ -1,12 +1,17 @@
 import { EyeOff } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function Login(){
 
+    
     const [loginForm, setLoginForm] = useState({
-        email: '',
+        email: 'cazz',
         password: ''
     })
+
+    useEffect(()=>{
+        console.log(loginForm)
+    },[loginForm])
 
     const [type, setType] = useState<string>("password")
 
@@ -19,7 +24,7 @@ export function Login(){
     }
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>){
-        const {name,value,type} = e.target;
+        const {name,value} = e.target;
         if (type !== 'checkbox') {
             setLoginForm({...loginForm, [name]:value})
         } 
@@ -33,9 +38,10 @@ export function Login(){
                     <label htmlFor="email">Email: </label>
                     <input type="text" name="email" id="email" onChange={handleChange} value={loginForm.email} />
                 </div>
-                <div>
+                <div className={'flex-in'}>
                     <label htmlFor="password">Password: </label>
-                    <input type="password" name="password" id="password" onChange={handleChange} value={loginForm.password}><EyeOff onClick={showPassword}/></input>
+                    <input type={type} name="password" id="password" onChange={handleChange} value={loginForm.password}/>
+                    <EyeOff onClick={showPassword}/>
                 </div>
             </form>
         </>

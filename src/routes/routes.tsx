@@ -1,12 +1,13 @@
 import { Home } from "../app/home/home";
 import { Login } from "../auth/login/login";
 import { Register } from "../auth/register/register";
+import { Layout } from "../layout/layout";
 import { RoutesType } from "../lib/types";
 import { ProtectedRoute } from "./protectedRoute";
 
 export const routes: RoutesType[] = [
     {
-        path: '/',
+        element: <Layout/>,
         children: [
             {
                 path: '',

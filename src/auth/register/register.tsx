@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { IRegistrationForm } from "../../lib/interfaces";
 import { validationService } from "../../services/validationService";
 import { useNavigate } from "react-router";
+import { EyeOff } from "lucide-react";
 
 export function Register(){
 
@@ -12,6 +13,8 @@ export function Register(){
         password: '',
         confermaPassword: ''
     });
+
+    const [type, setType] = useState<string>("password")
 
     const navigateTo = useNavigate();
 
@@ -55,10 +58,17 @@ export function Register(){
             confermaPassword: ''
         })
     }
+    
+    const showPassword = () => {
+        if (type === "password") {
+            setType("text")
+        } else {
+            setType("password")
+        }
+    }
 
     return(
         <>
-            <h1>Registrazione</h1>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="firstName">Nome: </label>
@@ -72,9 +82,10 @@ export function Register(){
                     <label htmlFor="email">Email: </label>
                     <input type="text" name="email" id="email" onChange={handleChange} value={registerForm.email} />
                 </div>
-                <div>
+                <div className={'flex-inline'}>
                     <label htmlFor="password">Password: </label>
-                    <input type="text" name="password" id="password" onChange={handleChange} value={registerForm.password} />
+                    <input type={type} name="password" id="password" onChange={handleChange} value={registerForm.password} />
+                    <EyeOff onClick={showPassword}/>
                 </div>
                 <div>
                     <label htmlFor="confermaPassword">Conferma password: </label>
